@@ -1,0 +1,144 @@
+{
+  "name": "GSShared",
+  "version": "0.1.0",
+  "summary": "GRIDSTONE iOS shared library for core functionality",
+  "description": "GRIDSTONE iOS shared library for core functionality.",
+  "homepage": "https://github.com/Gridstone/Shared-iOS",
+  "license": "MIT",
+  "authors": {
+    "Trent Fitzgibbon": "trentf@gridstone.com.au"
+  },
+  "source": {
+    "git": "https://github.com/Gridstone/Shared-iOS.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "requires_arc": true,
+  "source_files": "Pod/Classes/GSShared.h",
+  "resource_bundles": {
+    "GSShared": [
+      "Pod/Assets/*.png"
+    ]
+  },
+  "prefix_header_file": "Example/GSShared/Pod-Prefix.pch",
+  "subspecs": [
+    {
+      "name": "Core",
+      "source_files": "Pod/Classes/Core/**/*"
+    },
+    {
+      "name": "AutoLayout",
+      "source_files": "Pod/Classes/AutoLayout/**/*",
+      "dependencies": {
+        "GSShared/Core": [
+
+        ]
+      }
+    },
+    {
+      "name": "Forms",
+      "source_files": "Pod/Classes/Forms/**/*",
+      "resources": "Pod/Assets/Forms/*",
+      "dependencies": {
+        "GSShared/Location": [
+
+        ],
+        "GSShared/Model": [
+
+        ],
+        "GSShared/Network": [
+
+        ],
+        "GSShared/Utils": [
+
+        ],
+        "GSShared/UI": [
+
+        ],
+        "ZXingObjC": [
+
+        ]
+      }
+    },
+    {
+      "name": "Location",
+      "source_files": "Pod/Classes/Location/**/*",
+      "dependencies": {
+        "GSShared/Core": [
+
+        ]
+      }
+    },
+    {
+      "name": "Model",
+      "source_files": "Pod/Classes/Model/**/*",
+      "dependencies": {
+        "GSShared/Core": [
+
+        ],
+        "MagicalRecord": [
+
+        ],
+        "Mantle": [
+
+        ],
+        "MTLManagedObjectAdapter": [
+
+        ]
+      }
+    },
+    {
+      "name": "Network",
+      "source_files": "Pod/Classes/Network/**/*",
+      "dependencies": {
+        "GSShared/Model": [
+
+        ],
+        "GSShared/Tasks": [
+
+        ],
+        "GSShared/Utils": [
+
+        ],
+        "AFNetworking": [
+          "~> 2.0"
+        ]
+      }
+    },
+    {
+      "name": "Tasks",
+      "source_files": "Pod/Classes/Tasks/**/*",
+      "dependencies": {
+        "GSShared/Core": [
+
+        ]
+      }
+    },
+    {
+      "name": "UI",
+      "source_files": "Pod/Classes/UI/**/*",
+      "dependencies": {
+        "GSShared/AutoLayout": [
+
+        ],
+        "GSShared/Tasks": [
+
+        ],
+        "UIImage-Categories": [
+
+        ]
+      }
+    },
+    {
+      "name": "Utils",
+      "source_files": "Pod/Classes/Utils/**/*",
+      "dependencies": {
+        "GSShared/Tasks": [
+
+        ]
+      }
+    }
+  ]
+}

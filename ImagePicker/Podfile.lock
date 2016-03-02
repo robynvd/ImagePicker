@@ -1,0 +1,26 @@
+PODS:
+  - GSShared/AutoLayout (0.1.0):
+    - GSShared/Core
+  - GSShared/Core (0.1.0)
+  - MagicalRecord (2.3.2):
+    - MagicalRecord/Core (= 2.3.2)
+  - MagicalRecord/Core (2.3.2)
+
+DEPENDENCIES:
+  - GSShared/AutoLayout (from `https://github.com/Gridstone/Shared-iOS.git`)
+  - MagicalRecord
+
+EXTERNAL SOURCES:
+  GSShared:
+    :git: https://github.com/Gridstone/Shared-iOS.git
+
+CHECKOUT OPTIONS:
+  GSShared:
+    :commit: 1a23a67fe14aa2c23c01a7c95ea83ca467b428dd
+    :git: https://github.com/Gridstone/Shared-iOS.git
+
+SPEC CHECKSUMS:
+  GSShared: 0cfdc6676e622952ddac1993d17c0a34daf65eac
+  MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
+
+COCOAPODS: 0.39.0

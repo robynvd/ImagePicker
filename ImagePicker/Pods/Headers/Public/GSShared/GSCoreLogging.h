@@ -1,0 +1,1 @@
+../../../GSShared/Pod/Classes/Core/GSCoreLogging.h

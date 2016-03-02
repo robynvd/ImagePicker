@@ -1,0 +1,17 @@
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#endif
+
+//
+//  Prefix header for exported Pod
+//
+
+#import <Availability.h>
+
+#ifdef __OBJC__
+    @import UIKit;
+    @import Foundation;
+    @import CoreData;
+#endif
+
+#import "GSCore.h"

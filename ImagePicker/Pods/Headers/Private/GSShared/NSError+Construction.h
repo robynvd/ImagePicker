@@ -1,0 +1,1 @@
+../../../GSShared/Pod/Classes/Core/Extensions/NSError+Construction.h

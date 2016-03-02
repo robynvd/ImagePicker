@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ImagePickerImageCollectionView.h"
 
 @interface AppDelegate ()
 
@@ -20,6 +21,9 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    [self setupRootViewController];
+    
     return YES;
 }
 
@@ -43,6 +47,14 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)setupRootViewController
+{
+    ImagePickerImageCollectionView *imagePickerImageCollectionView = [[ImagePickerImageCollectionView alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:imagePickerImageCollectionView];
+    
+    self.window.rootViewController = navigationController;
 }
 
 @end
