@@ -18,6 +18,10 @@
 		08EC144F1C86673500CCBD9E /* ImagePickerImageSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EC144E1C86673500CCBD9E /* ImagePickerImageSelectionView.m */; };
 		08EC14531C86991F00CCBD9E /* NSError+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EC14521C86991F00CCBD9E /* NSError+Extended.m */; };
 		08EC14561C86A07700CCBD9E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 08EC14541C86A07700CCBD9E /* Model.xcdatamodeld */; };
+		08EC145B1C86AA9100CCBD9E /* Image+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EC14581C86AA9100CCBD9E /* Image+CoreDataProperties.m */; };
+		08EC145C1C86AA9100CCBD9E /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EC145A1C86AA9100CCBD9E /* Image.m */; };
+		08EC145F1C86AADE00CCBD9E /* CoreDataUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EC145E1C86AADE00CCBD9E /* CoreDataUtility.m */; };
+		08EC14621C86B4C700CCBD9E /* FileSavingUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EC14611C86B4C700CCBD9E /* FileSavingUtility.m */; };
 		201C430CF3F753E6D64E086A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C2D87A0E4516F8A91D31AD /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +65,14 @@
 		08EC14511C86991F00CCBD9E /* NSError+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+Extended.h"; sourceTree = "<group>"; };
 		08EC14521C86991F00CCBD9E /* NSError+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+Extended.m"; sourceTree = "<group>"; };
 		08EC14551C86A07700CCBD9E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		08EC14571C86AA9100CCBD9E /* Image+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Image+CoreDataProperties.h"; sourceTree = "<group>"; };
+		08EC14581C86AA9100CCBD9E /* Image+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Image+CoreDataProperties.m"; sourceTree = "<group>"; };
+		08EC14591C86AA9100CCBD9E /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
+		08EC145A1C86AA9100CCBD9E /* Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Image.m; sourceTree = "<group>"; };
+		08EC145D1C86AADE00CCBD9E /* CoreDataUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataUtility.h; sourceTree = "<group>"; };
+		08EC145E1C86AADE00CCBD9E /* CoreDataUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataUtility.m; sourceTree = "<group>"; };
+		08EC14601C86B4C700CCBD9E /* FileSavingUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileSavingUtility.h; sourceTree = "<group>"; };
+		08EC14611C86B4C700CCBD9E /* FileSavingUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileSavingUtility.m; sourceTree = "<group>"; };
 		216DBAA0B7484D19BDAB5637 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		93C2D87A0E4516F8A91D31AD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDB5B8357890478BB1726520 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -173,6 +185,10 @@
 				08EC14501C8698F900CCBD9E /* Categories */,
 				08EC144A1C8662FB00CCBD9E /* AppearanceUtility.h */,
 				08EC144B1C8662FB00CCBD9E /* AppearanceUtility.m */,
+				08EC145D1C86AADE00CCBD9E /* CoreDataUtility.h */,
+				08EC145E1C86AADE00CCBD9E /* CoreDataUtility.m */,
+				08EC14601C86B4C700CCBD9E /* FileSavingUtility.h */,
+				08EC14611C86B4C700CCBD9E /* FileSavingUtility.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -180,6 +196,10 @@
 		08EC14461C865FC700CCBD9E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				08EC14571C86AA9100CCBD9E /* Image+CoreDataProperties.h */,
+				08EC14581C86AA9100CCBD9E /* Image+CoreDataProperties.m */,
+				08EC14591C86AA9100CCBD9E /* Image.h */,
+				08EC145A1C86AA9100CCBD9E /* Image.m */,
 				08EC14541C86A07700CCBD9E /* Model.xcdatamodeld */,
 			);
 			name = Model;
@@ -394,8 +414,12 @@
 				08EC14531C86991F00CCBD9E /* NSError+Extended.m in Sources */,
 				08EC14491C86623600CCBD9E /* ImagePickerImageCollectionView.m in Sources */,
 				08EC141C1C865F6400CCBD9E /* AppDelegate.m in Sources */,
+				08EC14621C86B4C700CCBD9E /* FileSavingUtility.m in Sources */,
+				08EC145F1C86AADE00CCBD9E /* CoreDataUtility.m in Sources */,
+				08EC145B1C86AA9100CCBD9E /* Image+CoreDataProperties.m in Sources */,
 				08EC14561C86A07700CCBD9E /* Model.xcdatamodeld in Sources */,
 				08EC144C1C8662FB00CCBD9E /* AppearanceUtility.m in Sources */,
+				08EC145C1C86AA9100CCBD9E /* Image.m in Sources */,
 				08EC14191C865F6400CCBD9E /* main.m in Sources */,
 				08EC144F1C86673500CCBD9E /* ImagePickerImageSelectionView.m in Sources */,
 			);

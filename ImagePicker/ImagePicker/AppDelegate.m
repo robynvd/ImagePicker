@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ImagePickerImageCollectionView.h"
+#import <MagicalRecord/MagicalRecord.h>
 
 @interface AppDelegate ()
 
@@ -21,6 +22,8 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    [MagicalRecord setupCoreDataStack];
     
     [self setupRootViewController];
     

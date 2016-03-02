@@ -9,6 +9,10 @@
 #import "ImagePickerImageSelectionView.h"
 #import "NSLayoutConstraint+Extensions.h"
 #import "NSError+Extended.h"
+#import "CoreDataUtility.h"
+#import "Image.h"
+#import <MagicalRecord/MagicalRecord.h>
+#import "FileSavingUtility.h"
 
 @interface ImagePickerImageSelectionView() <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -123,6 +127,18 @@
 {
     [picker dismissViewControllerAnimated:YES completion:nil];
     self.selectedImageView.image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    
+    NSString *name = @"ImageName";
+    
+    [FileSavingUtility saveImage:self.selectedImageView.image withName:name];
+    
+    [CoreDataUtility saveImagePath:name withCompletionHandler:^(NSError *error)
+    {
+        if (error)
+        {
+            [self createAlertControllerWithError:error];
+        }
+    }];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker

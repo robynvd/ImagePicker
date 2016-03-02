@@ -10,6 +10,8 @@
 #import "ImagePickerImageSelectionView.h"
 #import "AppearanceUtility.h"
 #import "NSLayoutConstraint+Extensions.h"
+#import <MagicalRecord/MagicalRecord.h>
+#import "Image.h"
 
 static NSString *const ReuseIdentifier = @"ReuseIdentifier";
 
@@ -17,7 +19,6 @@ static NSString *const ReuseIdentifier = @"ReuseIdentifier";
 
 @property (nonatomic, strong) UICollectionViewFlowLayout *imageFlowLayout;
 @property (nonatomic, strong) UICollectionView *imageCollectionView;
-@property (nonatomic, strong) UIImage *image;
 
 @end
 
@@ -37,6 +38,8 @@ static NSString *const ReuseIdentifier = @"ReuseIdentifier";
 
 - (void)setupScreen
 {
+    NSLog(@"%@", [Image MR_findAll]);
+    
     //Collection View
     self.imageFlowLayout = [[UICollectionViewFlowLayout alloc] init];
     self.imageCollectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:self.imageFlowLayout];
@@ -45,8 +48,6 @@ static NSString *const ReuseIdentifier = @"ReuseIdentifier";
     self.imageCollectionView.backgroundColor = [UIColor lightGrayColor];
     [self.imageCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:ReuseIdentifier];
     [self.view addSubview:self.imageCollectionView];
-    
-    self.image = [UIImage imageNamed:@"unicorn"];
 }
 
 - (void)setupNavigationBar
@@ -84,8 +85,15 @@ static NSString *const ReuseIdentifier = @"ReuseIdentifier";
     }
     cell.backgroundColor = [UIColor darkGrayColor];
     
-//    UIImageView *imageView = [[UIImageView alloc] initWithImage:self.image];
-//    [cell.contentView addSubview:imageView];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = [paths objectAtIndex:0];
+    NSString *filePath = [documentsPath stringByAppendingPathComponent:@"ImageName"];
+    
+    NSData *pngData = [NSData dataWithContentsOfFile:filePath];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageWithData:pngData]];
+    
+    cell.contentView.clipsToBounds = YES;
+    [cell.contentView addSubview:imageView];
     
     return cell;
 }
