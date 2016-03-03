@@ -7,17 +7,29 @@
 //
 
 #import "FileSavingUtility.h"
+#import "NSError+Extended.h"
 
 @implementation FileSavingUtility
 
-+ (void)saveImage:(UIImage *)image withName:(NSString *)name
++ (void)saveImage:(UIImage *)image withName:(NSString *)name withCompletionHandler:(void (^)(NSError *))completionHandler
 {
     NSData *pngData = UIImagePNGRepresentation(image);
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsPath = [paths objectAtIndex:0];
+    NSString *documentsPath = [paths firstObject];
     NSString *filePath = [documentsPath stringByAppendingPathComponent:name];
-    [pngData writeToFile:filePath atomically:YES];
+    
+    NSError *error;
+    BOOL success = [pngData writeToFile:filePath options:NSDataWritingAtomic error:&error];
+    
+    if (!success)
+    {
+        completionHandler(error);
+    }
+    else
+    {
+        completionHandler(nil);
+    }
 }
 
 @end

@@ -127,16 +127,24 @@
 {
     [picker dismissViewControllerAnimated:YES completion:nil];
     self.selectedImageView.image = [info objectForKey:UIImagePickerControllerOriginalImage];
+
+    NSString *name = [[NSProcessInfo processInfo] globallyUniqueString];
     
-    NSString *name = @"ImageName";
-    
-    [FileSavingUtility saveImage:self.selectedImageView.image withName:name];
-    
-    [CoreDataUtility saveImagePath:name withCompletionHandler:^(NSError *error)
+    [FileSavingUtility saveImage:self.selectedImageView.image withName:name withCompletionHandler:^(NSError *error)
     {
         if (error)
         {
             [self createAlertControllerWithError:error];
+        }
+        else
+        {
+            [CoreDataUtility saveImagePath:name withCompletionHandler:^(NSError *error)
+             {
+                 if (error)
+                 {
+                     [self createAlertControllerWithError:error];
+                 }
+             }];
         }
     }];
 }

@@ -17,6 +17,7 @@
 {
     [MagicalRecord saveWithBlock:^(NSManagedObjectContext * _Nonnull localContext)
     {
+//        [Image MR_truncateAllInContext:localContext];
         Image *image = [Image MR_createEntityInContext:localContext];
         image.imagePath = imagePath;
     }

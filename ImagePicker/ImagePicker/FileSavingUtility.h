@@ -11,6 +11,6 @@
 
 @interface FileSavingUtility : NSObject
 
-+ (void)saveImage:(UIImage *)image withName:(NSString *)name;
++ (void)saveImage:(UIImage *)image withName:(NSString *)name withCompletionHandler:(void (^)(NSError *error))completionHandler;
 
 @end
