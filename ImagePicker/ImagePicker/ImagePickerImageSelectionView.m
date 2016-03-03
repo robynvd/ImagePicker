@@ -107,7 +107,6 @@
     {
         [self createAlertControllerWithError:[NSError createErrorWithMessage:@"No camera available on this device"]];
     }
-    
 }
 
 # pragma mark - Error Handling
@@ -138,13 +137,17 @@
         }
         else
         {
-            [CoreDataUtility saveImagePath:name withCompletionHandler:^(NSError *error)
-             {
+            [CoreDataUtility saveImagePath:name withCompletionHandler:^(BOOL success, NSError *error)
+            {
                  if (error)
                  {
                      [self createAlertControllerWithError:error];
                  }
-             }];
+                 else if (success)
+                 {
+                     [self.navigationController popViewControllerAnimated:YES];
+                 }
+            }];
         }
     }];
 }

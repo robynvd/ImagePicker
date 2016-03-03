@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		080C67461C87D7FE00614575 /* ImagePickerSelectedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 080C67451C87D7FE00614575 /* ImagePickerSelectedImageView.m */; };
 		08EC14191C865F6400CCBD9E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EC14181C865F6400CCBD9E /* main.m */; };
 		08EC141C1C865F6400CCBD9E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EC141B1C865F6400CCBD9E /* AppDelegate.m */; };
 		08EC141E1C865F6400CCBD9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08EC141D1C865F6400CCBD9E /* Assets.xcassets */; };
@@ -43,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		080C67441C87D7FE00614575 /* ImagePickerSelectedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickerSelectedImageView.h; sourceTree = "<group>"; };
+		080C67451C87D7FE00614575 /* ImagePickerSelectedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePickerSelectedImageView.m; sourceTree = "<group>"; };
 		08EC14141C865F6400CCBD9E /* ImagePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImagePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08EC14181C865F6400CCBD9E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		08EC141A1C865F6400CCBD9E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -175,6 +178,8 @@
 				08EC14481C86623600CCBD9E /* ImagePickerImageCollectionView.m */,
 				08EC144D1C86673500CCBD9E /* ImagePickerImageSelectionView.h */,
 				08EC144E1C86673500CCBD9E /* ImagePickerImageSelectionView.m */,
+				080C67441C87D7FE00614575 /* ImagePickerSelectedImageView.h */,
+				080C67451C87D7FE00614575 /* ImagePickerSelectedImageView.m */,
 			);
 			name = Screens;
 			sourceTree = "<group>";
@@ -417,6 +422,7 @@
 				08EC141C1C865F6400CCBD9E /* AppDelegate.m in Sources */,
 				08EC14621C86B4C700CCBD9E /* FileSavingUtility.m in Sources */,
 				08EC145F1C86AADE00CCBD9E /* CoreDataUtility.m in Sources */,
+				080C67461C87D7FE00614575 /* ImagePickerSelectedImageView.m in Sources */,
 				08EC145B1C86AA9100CCBD9E /* Image+CoreDataProperties.m in Sources */,
 				08EC14561C86A07700CCBD9E /* Model.xcdatamodeld in Sources */,
 				08EC144C1C8662FB00CCBD9E /* AppearanceUtility.m in Sources */,

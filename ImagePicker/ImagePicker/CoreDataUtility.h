@@ -10,6 +10,7 @@
 
 @interface CoreDataUtility : NSObject
 
-+ (void)saveImagePath:(NSString *)imagePath withCompletionHandler:(void (^)(NSError *error))completionHandler;
++ (void)saveImagePath:(NSString *)imagePath withCompletionHandler:(void (^)(BOOL success, NSError *error))completionHandler;
++ (void)deleteImage:(NSString *)imageNamed withCompletionHandler:(void (^)(BOOL success, NSError *error))completionHandler;
 
 @end

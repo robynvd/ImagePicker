@@ -13,6 +13,7 @@
 #import <MagicalRecord/MagicalRecord.h>
 #import "Image.h"
 #import "NSError+Extended.h"
+#import "ImagePickerSelectedImageView.h"
 
 static NSString *const ReuseIdentifier = @"ReuseIdentifier";
 
@@ -56,8 +57,6 @@ static NSString *const ReuseIdentifier = @"ReuseIdentifier";
 
 - (void)setupScreen
 {
-    NSLog(@"%@", [Image MR_findAll]);
-    
     self.sectionChanges = [NSMutableArray array];
     self.objectChanges = [NSMutableArray array];
     
@@ -125,16 +124,26 @@ static NSString *const ReuseIdentifier = @"ReuseIdentifier";
 
     NSError *error;
     NSData *pngData = [NSData dataWithContentsOfFile:filePath options:NSDataReadingMappedAlways error:&error];
+    
     if (error)
     {
         NSLog(@"Could not retrieve images");
     }
+    
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageWithData:pngData]];
     
     cell.contentView.clipsToBounds = YES;
     [cell.contentView addSubview:imageView];
     
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    Image *image = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    ImagePickerSelectedImageView *imagePickerSelectedImageView = [[ImagePickerSelectedImageView alloc] initWithImage:image];
+    
+    [self.navigationController pushViewController:imagePickerSelectedImageView animated:YES];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -146,6 +155,8 @@ static NSString *const ReuseIdentifier = @"ReuseIdentifier";
 {
     return UIEdgeInsetsMake(30, 50, 30, 50);
 }
+
+# pragma mark - Fetched Results Controller
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
            atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
@@ -186,6 +197,7 @@ static NSString *const ReuseIdentifier = @"ReuseIdentifier";
             change[@(type)] = @[indexPath, newIndexPath];
             break;
     }
+    
     [self.objectChanges addObject:change];
 }
 
