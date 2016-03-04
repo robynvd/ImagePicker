@@ -8,18 +8,25 @@
 
 #import "CoreDataUtility.h"
 #import <MagicalRecord/MagicalRecord.h>
-#import "Image.h"
+#import "Media.h"
 #import "NSError+Extended.h"
 
 @implementation CoreDataUtility
 
-+ (void)saveImagePath:(NSString *)imagePath withCompletionHandler:(void (^)(BOOL success, NSError *error))completionHandler
++ (void)saveMediaNamed:(NSString *)name withType:(NSString *)type withCompletionHandler:(void (^)(BOOL success, NSError *error))completionHandler
 {
     [MagicalRecord saveWithBlock:^(NSManagedObjectContext * _Nonnull localContext)
     {
-//        [Image MR_truncateAllInContext:localContext];
-        Image *image = [Image MR_createEntityInContext:localContext];
-        image.imagePath = imagePath;
+        Media *image = [Media MR_createEntityInContext:localContext];
+        if ([type isEqualToString:@"public.movie"])
+        {
+            image.name = [NSString stringWithFormat:@"%@.mov", name];
+        }
+        else
+        {
+            image.name = [NSString stringWithFormat:@"%@.png", name];
+        }
+        image.type = type;
     }
     completion:^(BOOL contextDidSave, NSError * _Nullable error)
     {
@@ -38,9 +45,9 @@
     }];
 }
 
-+ (void)deleteImage:(NSString *)imageNamed withCompletionHandler:(void (^)(BOOL success, NSError *))completionHandler
++ (void)deleteMediaNamed:(NSString *)name withCompletionHandler:(void (^)(BOOL success, NSError *))completionHandler
 {
-    Image *image = [Image MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"imagePath == %@", imageNamed]];
+    Media *image = [Media MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"name == %@", name]];
     
     if (image)
     {
@@ -66,7 +73,7 @@
     }
     else
     {
-        completionHandler(NO, [NSError createErrorWithMessage:@"No files match this image title"]);
+        completionHandler(NO, [NSError createErrorWithMessage:@"No files match this image"]);
     }
     
 }

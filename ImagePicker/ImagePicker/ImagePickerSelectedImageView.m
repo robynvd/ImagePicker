@@ -13,7 +13,7 @@
 
 @interface ImagePickerSelectedImageView ()
 
-@property (nonatomic, strong) Image *image;
+@property (nonatomic, strong) Media *image;
 @property (nonatomic, strong) UIImageView *imageView;
 
 @end
@@ -22,7 +22,7 @@
 
 # pragma mark - Setup
 
-- (instancetype)initWithImage:(Image *)selectedImage
+- (instancetype)initWithImage:(Media *)selectedImage
 {
     self = [super init];
     if (self)
@@ -46,7 +46,7 @@
     //Image View
     NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsPath = [path firstObject];
-    NSString *filePath = [documentsPath stringByAppendingPathComponent:self.image.imagePath];
+    NSString *filePath = [documentsPath stringByAppendingPathComponent:self.image.name];
     
     NSError *error;
     NSData *pngData = [NSData dataWithContentsOfFile:filePath options:NSDataReadingMappedAlways error:&error];
@@ -88,7 +88,7 @@
 
 - (void)deleteImageFromGallery
 {
-    [CoreDataUtility deleteImage:self.image.imagePath withCompletionHandler:^(BOOL success, NSError *error)
+    [CoreDataUtility deleteMediaNamed:self.image.name withCompletionHandler:^(BOOL success, NSError *error)
     {
         if (error)
         {
@@ -96,7 +96,7 @@
         }
         else if (success)
         {
-            [self.navigationController popViewControllerAnimated:YES];
+            self.imageView.image = nil;
         }
     }];
 }

@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		080C67461C87D7FE00614575 /* ImagePickerSelectedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 080C67451C87D7FE00614575 /* ImagePickerSelectedImageView.m */; };
+		080C674C1C88EA7300614575 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 080C674A1C88EA7300614575 /* Model.xcdatamodeld */; };
+		080C67511C88EA9E00614575 /* Media+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 080C674E1C88EA9E00614575 /* Media+CoreDataProperties.m */; };
+		080C67521C88EA9E00614575 /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = 080C67501C88EA9E00614575 /* Media.m */; };
+		080C67551C88EEDD00614575 /* ImagePickerSelectedVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 080C67541C88EEDD00614575 /* ImagePickerSelectedVideoView.m */; };
 		08EC14191C865F6400CCBD9E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EC14181C865F6400CCBD9E /* main.m */; };
 		08EC141C1C865F6400CCBD9E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EC141B1C865F6400CCBD9E /* AppDelegate.m */; };
 		08EC141E1C865F6400CCBD9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08EC141D1C865F6400CCBD9E /* Assets.xcassets */; };
@@ -18,9 +22,6 @@
 		08EC144C1C8662FB00CCBD9E /* AppearanceUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EC144B1C8662FB00CCBD9E /* AppearanceUtility.m */; };
 		08EC144F1C86673500CCBD9E /* ImagePickerImageSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EC144E1C86673500CCBD9E /* ImagePickerImageSelectionView.m */; };
 		08EC14531C86991F00CCBD9E /* NSError+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EC14521C86991F00CCBD9E /* NSError+Extended.m */; };
-		08EC14561C86A07700CCBD9E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 08EC14541C86A07700CCBD9E /* Model.xcdatamodeld */; };
-		08EC145B1C86AA9100CCBD9E /* Image+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EC14581C86AA9100CCBD9E /* Image+CoreDataProperties.m */; };
-		08EC145C1C86AA9100CCBD9E /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EC145A1C86AA9100CCBD9E /* Image.m */; };
 		08EC145F1C86AADE00CCBD9E /* CoreDataUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EC145E1C86AADE00CCBD9E /* CoreDataUtility.m */; };
 		08EC14621C86B4C700CCBD9E /* FileSavingUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EC14611C86B4C700CCBD9E /* FileSavingUtility.m */; };
 		201C430CF3F753E6D64E086A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C2D87A0E4516F8A91D31AD /* libPods.a */; };
@@ -46,6 +47,13 @@
 /* Begin PBXFileReference section */
 		080C67441C87D7FE00614575 /* ImagePickerSelectedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickerSelectedImageView.h; sourceTree = "<group>"; };
 		080C67451C87D7FE00614575 /* ImagePickerSelectedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePickerSelectedImageView.m; sourceTree = "<group>"; };
+		080C674B1C88EA7300614575 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		080C674D1C88EA9E00614575 /* Media+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Media+CoreDataProperties.h"; sourceTree = "<group>"; };
+		080C674E1C88EA9E00614575 /* Media+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Media+CoreDataProperties.m"; sourceTree = "<group>"; };
+		080C674F1C88EA9E00614575 /* Media.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Media.h; sourceTree = "<group>"; };
+		080C67501C88EA9E00614575 /* Media.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Media.m; sourceTree = "<group>"; };
+		080C67531C88EEDD00614575 /* ImagePickerSelectedVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickerSelectedVideoView.h; sourceTree = "<group>"; };
+		080C67541C88EEDD00614575 /* ImagePickerSelectedVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePickerSelectedVideoView.m; sourceTree = "<group>"; };
 		08EC14141C865F6400CCBD9E /* ImagePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImagePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08EC14181C865F6400CCBD9E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		08EC141A1C865F6400CCBD9E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -67,11 +75,6 @@
 		08EC144E1C86673500CCBD9E /* ImagePickerImageSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePickerImageSelectionView.m; sourceTree = "<group>"; };
 		08EC14511C86991F00CCBD9E /* NSError+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+Extended.h"; sourceTree = "<group>"; };
 		08EC14521C86991F00CCBD9E /* NSError+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+Extended.m"; sourceTree = "<group>"; };
-		08EC14551C86A07700CCBD9E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		08EC14571C86AA9100CCBD9E /* Image+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Image+CoreDataProperties.h"; sourceTree = "<group>"; };
-		08EC14581C86AA9100CCBD9E /* Image+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Image+CoreDataProperties.m"; sourceTree = "<group>"; };
-		08EC14591C86AA9100CCBD9E /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
-		08EC145A1C86AA9100CCBD9E /* Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Image.m; sourceTree = "<group>"; };
 		08EC145D1C86AADE00CCBD9E /* CoreDataUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataUtility.h; sourceTree = "<group>"; };
 		08EC145E1C86AADE00CCBD9E /* CoreDataUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataUtility.m; sourceTree = "<group>"; };
 		08EC14601C86B4C700CCBD9E /* FileSavingUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileSavingUtility.h; sourceTree = "<group>"; };
@@ -180,6 +183,8 @@
 				08EC144E1C86673500CCBD9E /* ImagePickerImageSelectionView.m */,
 				080C67441C87D7FE00614575 /* ImagePickerSelectedImageView.h */,
 				080C67451C87D7FE00614575 /* ImagePickerSelectedImageView.m */,
+				080C67531C88EEDD00614575 /* ImagePickerSelectedVideoView.h */,
+				080C67541C88EEDD00614575 /* ImagePickerSelectedVideoView.m */,
 			);
 			name = Screens;
 			sourceTree = "<group>";
@@ -201,11 +206,11 @@
 		08EC14461C865FC700CCBD9E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				08EC14571C86AA9100CCBD9E /* Image+CoreDataProperties.h */,
-				08EC14581C86AA9100CCBD9E /* Image+CoreDataProperties.m */,
-				08EC14591C86AA9100CCBD9E /* Image.h */,
-				08EC145A1C86AA9100CCBD9E /* Image.m */,
-				08EC14541C86A07700CCBD9E /* Model.xcdatamodeld */,
+				080C674D1C88EA9E00614575 /* Media+CoreDataProperties.h */,
+				080C674E1C88EA9E00614575 /* Media+CoreDataProperties.m */,
+				080C674F1C88EA9E00614575 /* Media.h */,
+				080C67501C88EA9E00614575 /* Media.m */,
+				080C674A1C88EA7300614575 /* Model.xcdatamodeld */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -422,11 +427,12 @@
 				08EC141C1C865F6400CCBD9E /* AppDelegate.m in Sources */,
 				08EC14621C86B4C700CCBD9E /* FileSavingUtility.m in Sources */,
 				08EC145F1C86AADE00CCBD9E /* CoreDataUtility.m in Sources */,
+				080C67511C88EA9E00614575 /* Media+CoreDataProperties.m in Sources */,
+				080C67521C88EA9E00614575 /* Media.m in Sources */,
+				080C67551C88EEDD00614575 /* ImagePickerSelectedVideoView.m in Sources */,
 				080C67461C87D7FE00614575 /* ImagePickerSelectedImageView.m in Sources */,
-				08EC145B1C86AA9100CCBD9E /* Image+CoreDataProperties.m in Sources */,
-				08EC14561C86A07700CCBD9E /* Model.xcdatamodeld in Sources */,
 				08EC144C1C8662FB00CCBD9E /* AppearanceUtility.m in Sources */,
-				08EC145C1C86AA9100CCBD9E /* Image.m in Sources */,
+				080C674C1C88EA7300614575 /* Model.xcdatamodeld in Sources */,
 				08EC14191C865F6400CCBD9E /* main.m in Sources */,
 				08EC144F1C86673500CCBD9E /* ImagePickerImageSelectionView.m in Sources */,
 			);
@@ -677,12 +683,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		08EC14541C86A07700CCBD9E /* Model.xcdatamodeld */ = {
+		080C674A1C88EA7300614575 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				08EC14551C86A07700CCBD9E /* Model.xcdatamodel */,
+				080C674B1C88EA7300614575 /* Model.xcdatamodel */,
 			);
-			currentVersion = 08EC14551C86A07700CCBD9E /* Model.xcdatamodel */;
+			currentVersion = 080C674B1C88EA7300614575 /* Model.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

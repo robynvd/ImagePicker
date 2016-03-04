@@ -101,6 +101,7 @@
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
         self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        self.imagePicker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera];
         [self presentViewController:self.imagePicker animated:YES completion:nil];
     }
     else
@@ -125,31 +126,65 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
     [picker dismissViewControllerAnimated:YES completion:nil];
-    self.selectedImageView.image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    NSString *type = [info objectForKey:UIImagePickerControllerMediaType];
 
     NSString *name = [[NSProcessInfo processInfo] globallyUniqueString];
     
-    [FileSavingUtility saveImage:self.selectedImageView.image withName:name withCompletionHandler:^(NSError *error)
+    NSLog(@"%@", info);
+
+    if ([type isEqualToString:@"public.movie"])
     {
-        if (error)
+        NSURL *url = [info objectForKey:UIImagePickerControllerMediaURL];
+        
+        [FileSavingUtility saveVideo:url withName:name withCompletionHandler:^(NSError *error)
         {
-            [self createAlertControllerWithError:error];
-        }
-        else
-        {
-            [CoreDataUtility saveImagePath:name withCompletionHandler:^(BOOL success, NSError *error)
+            if (error)
             {
-                 if (error)
-                 {
-                     [self createAlertControllerWithError:error];
-                 }
-                 else if (success)
-                 {
-                     [self.navigationController popViewControllerAnimated:YES];
-                 }
-            }];
-        }
-    }];
+                [self createAlertControllerWithError:error];
+            }
+            else
+            {
+                [CoreDataUtility saveMediaNamed:name withType:(NSString *)type withCompletionHandler:^(BOOL success, NSError *error)
+                {
+                    if (error)
+                    {
+                        [self createAlertControllerWithError:error];
+                    }
+                    else if (success)
+                    {
+                        [self.navigationController popViewControllerAnimated:YES];
+                    }
+                }];
+            }
+        }];
+    }
+    else
+    {
+        self.selectedImageView.image = [info objectForKey:UIImagePickerControllerOriginalImage];
+        
+        [FileSavingUtility saveImage:self.selectedImageView.image withName:name withCompletionHandler:^(NSError *error)
+         {
+             if (error)
+             {
+                 [self createAlertControllerWithError:error];
+             }
+             else
+             {
+                 [CoreDataUtility saveMediaNamed:name withType:(NSString *)type withCompletionHandler:^(BOOL success, NSError *error)
+                  {
+                      if (error)
+                      {
+                          [self createAlertControllerWithError:error];
+                      }
+                      else if (success)
+                      {
+                          [self.navigationController popViewControllerAnimated:YES];
+                      }
+                  }];
+             }
+         }];
+    }
+    
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker

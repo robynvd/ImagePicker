@@ -1,5 +1,5 @@
 //
-//  Image+CoreDataProperties.m
+//  Media+CoreDataProperties.h
 //  ImagePicker
 //
 //  Created by Robyn Van Deventer on 4/03/2016.
@@ -9,11 +9,15 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "Image+CoreDataProperties.h"
+#import "Media.h"
 
-@implementation Image (CoreDataProperties)
+NS_ASSUME_NONNULL_BEGIN
 
-@dynamic name;
-@dynamic type;
+@interface Media (CoreDataProperties)
+
+@property (nullable, nonatomic, retain) NSString *name;
+@property (nullable, nonatomic, retain) NSString *type;
 
 @end
+
+NS_ASSUME_NONNULL_END

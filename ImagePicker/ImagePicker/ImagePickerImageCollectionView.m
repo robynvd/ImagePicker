@@ -11,9 +11,10 @@
 #import "AppearanceUtility.h"
 #import "NSLayoutConstraint+Extensions.h"
 #import <MagicalRecord/MagicalRecord.h>
-#import "Image.h"
+#import "Media.h"
 #import "NSError+Extended.h"
 #import "ImagePickerSelectedImageView.h"
+#import "ImagePickerSelectedVideoView.h"
 
 static NSString *const ReuseIdentifier = @"ReuseIdentifier";
 
@@ -36,7 +37,7 @@ static NSString *const ReuseIdentifier = @"ReuseIdentifier";
 {
     [super viewDidLoad];
     
-    self.fetchedResultsController = [Image MR_fetchAllSortedBy:@"imagePath"
+    self.fetchedResultsController = [Media MR_fetchAllSortedBy:@"name"
                                                         ascending:YES
                                                     withPredicate:nil
                                                           groupBy:nil
@@ -57,6 +58,7 @@ static NSString *const ReuseIdentifier = @"ReuseIdentifier";
 
 - (void)setupScreen
 {
+    NSLog(@"%@", [Media MR_findFirst].name);
     self.sectionChanges = [NSMutableArray array];
     self.objectChanges = [NSMutableArray array];
     
@@ -116,18 +118,18 @@ static NSString *const ReuseIdentifier = @"ReuseIdentifier";
     
     cell.backgroundColor = [UIColor darkGrayColor];
     
-    Image *image = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    Media *image = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsPath = [path firstObject];
-    NSString *filePath = [documentsPath stringByAppendingPathComponent:image.imagePath];
+    NSString *filePath = [documentsPath stringByAppendingPathComponent:image.name];
 
     NSError *error;
     NSData *pngData = [NSData dataWithContentsOfFile:filePath options:NSDataReadingMappedAlways error:&error];
     
     if (error)
     {
-        NSLog(@"Could not retrieve images");
+        NSLog(@"%@", error);
     }
     
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageWithData:pngData]];
@@ -140,10 +142,20 @@ static NSString *const ReuseIdentifier = @"ReuseIdentifier";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    Image *image = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    ImagePickerSelectedImageView *imagePickerSelectedImageView = [[ImagePickerSelectedImageView alloc] initWithImage:image];
+    Media *image = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    [self.navigationController pushViewController:imagePickerSelectedImageView animated:YES];
+    if ([image.type isEqualToString:@"public.image"])
+    {
+        ImagePickerSelectedImageView *imagePickerSelectedImageView = [[ImagePickerSelectedImageView alloc] initWithImage:image];
+        
+        [self.navigationController pushViewController:imagePickerSelectedImageView animated:YES];
+    }
+    else
+    {
+        ImagePickerSelectedVideoView *imagePickerSelectedVideoView = [[ImagePickerSelectedVideoView alloc] initWithVideo:image];
+        
+        [self.navigationController pushViewController:imagePickerSelectedVideoView animated:YES];
+    }
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath

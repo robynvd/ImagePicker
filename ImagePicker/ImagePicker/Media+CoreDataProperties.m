@@ -1,5 +1,5 @@
 //
-//  Image+CoreDataProperties.m
+//  Media+CoreDataProperties.m
 //  ImagePicker
 //
 //  Created by Robyn Van Deventer on 4/03/2016.
@@ -9,9 +9,9 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "Image+CoreDataProperties.h"
+#import "Media+CoreDataProperties.h"
 
-@implementation Image (CoreDataProperties)
+@implementation Media (CoreDataProperties)
 
 @dynamic name;
 @dynamic type;

@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Image.h"
+#import "Media.h"
 
 @interface ImagePickerSelectedImageView : UIViewController
 
-- (instancetype)initWithImage:(Image *)selectedImage;
+- (instancetype)initWithImage:(Media *)selectedImage;
 
 @end
