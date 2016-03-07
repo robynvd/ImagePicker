@@ -8,6 +8,7 @@
 
 #import "IPVideoTimerView.h"
 #import "NSLayoutConstraint+Extensions.h"
+#import "AppearanceUtility.h"
 
 @implementation IPVideoTimerView
 
@@ -17,13 +18,14 @@
     if (self)
     {
         self.timerLabel = [[UILabel alloc] init];
+        self.timerLabel.textColor = [UIColor textColor];
         [self addSubview:self.timerLabel];
         
         [NSLayoutConstraint activateConstraints:@[
                                                   
                                                   //Timer Label
                                                   NSLayoutConstraintMakeAll(self.timerLabel, ALHeight, ALEqual, nil, ALHeight, 1.0, 20, UILayoutPriorityRequired),
-                                                  NSLayoutConstraintMakeAll(self.timerLabel, ALWidth, ALEqual, nil, ALWidth, 1.0, 100, UILayoutPriorityRequired),
+                                                  NSLayoutConstraintMakeAll(self.timerLabel, ALWidth, ALEqual, nil, ALWidth, 1.0, 60, UILayoutPriorityRequired),
                                                   NSLayoutConstraintMakeEqual(self.timerLabel, ALCenterX, self),
                                                   NSLayoutConstraintMakeEqual(self.timerLabel, ALCenterY, self),
 

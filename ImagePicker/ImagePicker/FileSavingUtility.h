@@ -13,5 +13,6 @@
 
 + (void)saveImage:(UIImage *)image withName:(NSString *)name saveThumbnail:(UIImage *)thumbnailImage withName:(NSString *)thumbnailName withCompletionHandler:(void (^)(NSError *error))completionHandler;
 + (void)saveVideo:(NSURL *)videoURL withName:(NSString *)name saveThumbnail:(UIImage *)thumbnailImage withName:(NSString *)thumbnailName withCompletionHandler:(void (^)(NSError *error))completionHandler;
++ (void)removeMediaNamed:(NSString *)name removeThumbnailNamed:(NSString *)thumbnailName withCompletionHandler:(void (^)(NSError *error))completionHandler;
 
 @end

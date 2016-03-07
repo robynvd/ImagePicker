@@ -17,14 +17,21 @@
     UINavigationBar *navBar = [UINavigationBar appearance];
     navBar.translucent = YES;
     navBar.barStyle = UIBarStyleBlack;
-    navBar.tintColor = [UIColor whiteColor];
+    navBar.tintColor = [UIColor textColor];
 }
 
 @end
 
 @implementation UIColor (AppearanceUtility)
 
-+ (UIColor *)backgroundColor    {   return [UIColor purpleColor];   }
+//Universal Colors
++ (UIColor *)backgroundColor    {   return [UIColor colorWithRed:0.286 green:0.18 blue:0.455 alpha:1];      }
++ (UIColor *)buttonColor        {   return [UIColor colorWithRed:0.184 green:0.082 blue:0.341 alpha:1];     }
++ (UIColor *)textColor          {   return [UIColor colorWithRed:0.557 green:0.475 blue:0.682 alpha:1];     }
++ (UIColor *)imageViewColor     {   return [UIColor colorWithRed:0.412 green:0.31 blue:0.569 alpha:1];      }
+
+//Selected Image View Colors
++ (UIColor *)deleteButtonColor  {   return [UIColor colorWithRed:0.800 green:0.080 blue:0.205 alpha:1.000]; }
 
 @end
 

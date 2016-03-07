@@ -12,6 +12,8 @@
 #import "CoreDataUtility.h"
 #import "NSError+Extended.h"
 #import "IPVideoTimerView.h"
+#import "AppearanceUtility.h"
+#import "FileSavingUtility.h"
 
 @interface ImagePickerSelectedVideoView ()
 
@@ -44,6 +46,8 @@
 
 - (void)setupScreen
 {
+    self.view.backgroundColor = [UIColor backgroundColor];
+    
     if (self.video)
     {
         //File Path
@@ -71,8 +75,8 @@
         //Play Button
         UIButton *playButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [playButton setTitle:@"Play" forState:UIControlStateNormal];
-        [playButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [playButton setBackgroundColor:[UIColor darkGrayColor]];
+        [playButton setTitleColor:[UIColor textColor] forState:UIControlStateNormal];
+        [playButton setBackgroundColor:[UIColor buttonColor]];
         playButton.layer.cornerRadius = 5;
         [playButton addTarget:self action:@selector(playVideo) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:playButton];
@@ -80,8 +84,8 @@
         //Pause Button
         UIButton *pauseButton =[UIButton buttonWithType:UIButtonTypeRoundedRect];
         [pauseButton setTitle:@"Pause" forState:UIControlStateNormal];
-        [pauseButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [pauseButton setBackgroundColor:[UIColor darkGrayColor]];
+        [pauseButton setTitleColor:[UIColor textColor] forState:UIControlStateNormal];
+        [pauseButton setBackgroundColor:[UIColor buttonColor]];
         pauseButton.layer.cornerRadius = 5;
         [pauseButton addTarget:self action:@selector(pauseVideo) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:pauseButton];
@@ -142,7 +146,13 @@
 
 - (void)updateTimer
 {
-    [self.timerView.timerLabel setText:[NSString stringWithFormat:@"%.f/%.fs", CMTimeGetSeconds(self.moviePlayer.currentTime), CMTimeGetSeconds(self.videoItem.duration)]];
+    if (!isnan(CMTimeGetSeconds(self.videoItem.duration)))
+    {
+        [self.timerView.timerLabel setText:[NSString stringWithFormat:@"%.f/%.fs", CMTimeGetSeconds(self.moviePlayer.currentTime), CMTimeGetSeconds(self.videoItem.duration)]];
+    }
+    else
+        [self.timerView.timerLabel setText:@""];
+    
 }
 
 # pragma mark - Actions
@@ -159,17 +169,30 @@
 
 - (void)deleteVideo
 {
-    [CoreDataUtility deleteMediaNamed:self.video.name withCompletionHandler:^(BOOL success, NSError *error)
-     {
-         if (error)
-         {
-             [self createAlertControllerWithError:error];
-         }
-         else if (success)
-         {
-             [self.moviePlayer replaceCurrentItemWithPlayerItem:nil];
-         }
-     }];
+    [FileSavingUtility removeMediaNamed:self.video.name removeThumbnailNamed:self.video.thumbnail withCompletionHandler:^(NSError *error)
+    {
+        //This needs work. I still want it gone from core data if the delete thumbnail fails as the item will always be stuck there
+        //unless the app gets uninstalled. But then two alert controllers may present if they both go under the if (error)
+        if (error)
+        {
+            [self createAlertControllerWithError:error];
+        }
+        else
+        {
+            [CoreDataUtility deleteMediaNamed:self.video.name withCompletionHandler:^(BOOL success, NSError *error)
+             {
+                 if (error)
+                 {
+                     [self createAlertControllerWithError:error];
+                 }
+                 else if (success)
+                 {
+                     [self.moviePlayer replaceCurrentItemWithPlayerItem:nil];
+                     [self.timerView.timerLabel setText:@""];
+                 }
+             }];
+        }
+    }];
 }
 
 # pragma mark - Error Handling

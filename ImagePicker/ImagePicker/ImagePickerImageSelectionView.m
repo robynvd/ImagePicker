@@ -35,27 +35,27 @@
 
 - (void)setupScreen
 {
-    self.view.backgroundColor = [UIColor grayColor];
+    self.view.backgroundColor = [UIColor backgroundColor];
     
     //Selected Image View
     self.selectedImageView = [[UIImageView alloc] init];
-    self.selectedImageView.backgroundColor = [UIColor darkGrayColor];
+    self.selectedImageView.backgroundColor = [UIColor imageViewColor];
     [self.view addSubview:self.selectedImageView];
     
     //Gallery Button
     UIButton *galleryButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [galleryButton setTitle:@"Choose from Gallery" forState:UIControlStateNormal];
-    [galleryButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [galleryButton setBackgroundColor:[UIColor darkGrayColor]];
+    [galleryButton setTitleColor:[UIColor textColor] forState:UIControlStateNormal];
+    [galleryButton setBackgroundColor:[UIColor buttonColor]];
     galleryButton.layer.cornerRadius = 5;
     [galleryButton addTarget:self action:@selector(chooseImageFromGallery) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:galleryButton];
     
     //Camera Button
     UIButton *cameraButton =[UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [cameraButton setTitle:@"Take Photo" forState:UIControlStateNormal];
-    [cameraButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [cameraButton setBackgroundColor:[UIColor darkGrayColor]];
+    [cameraButton setTitle:@"Capture Media" forState:UIControlStateNormal];
+    [cameraButton setTitleColor:[UIColor textColor] forState:UIControlStateNormal];
+    [cameraButton setBackgroundColor:[UIColor buttonColor]];
     cameraButton.layer.cornerRadius = 5;
     [cameraButton addTarget:self action:@selector(chooseImageFromCamera) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:cameraButton];

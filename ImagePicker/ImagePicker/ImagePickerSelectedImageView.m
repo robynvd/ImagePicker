@@ -10,6 +10,7 @@
 #import "NSLayoutConstraint+Extensions.h"
 #import "CoreDataUtility.h"
 #import "NSError+Extended.h"
+#import "AppearanceUtility.h"
 
 @interface ImagePickerSelectedImageView ()
 
@@ -41,7 +42,7 @@
 
 - (void)screenSetup
 {
-    self.view.backgroundColor = [UIColor lightGrayColor];
+    self.view.backgroundColor = [UIColor backgroundColor];
     
     //Image View
     NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -61,7 +62,7 @@
     UIButton *deleteButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [deleteButton setTitle:@"Delete Image" forState:UIControlStateNormal];
     [deleteButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [deleteButton setBackgroundColor:[UIColor redColor]];
+    [deleteButton setBackgroundColor:[UIColor deleteButtonColor]];
     deleteButton.layer.cornerRadius = 5;
     [deleteButton addTarget:self action:@selector(deleteImageFromGallery) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:deleteButton];

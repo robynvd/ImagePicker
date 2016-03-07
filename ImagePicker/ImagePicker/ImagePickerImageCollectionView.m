@@ -58,7 +58,8 @@ static NSString *const ReuseIdentifier = @"ReuseIdentifier";
 
 - (void)setupScreen
 {
-    NSLog(@"%@", [Media MR_findFirst].name);
+    self.view.backgroundColor = [UIColor backgroundColor];
+    
     self.sectionChanges = [NSMutableArray array];
     self.objectChanges = [NSMutableArray array];
     
@@ -67,7 +68,7 @@ static NSString *const ReuseIdentifier = @"ReuseIdentifier";
     self.imageCollectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:self.imageFlowLayout];
     self.imageCollectionView.delegate = self;
     self.imageCollectionView.dataSource = self;
-    self.imageCollectionView.backgroundColor = [UIColor lightGrayColor];
+    self.imageCollectionView.backgroundColor = [UIColor imageViewColor];
     [self.imageCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:ReuseIdentifier];
     [self.view addSubview:self.imageCollectionView];
 }
@@ -116,7 +117,7 @@ static NSString *const ReuseIdentifier = @"ReuseIdentifier";
         cell = [[UICollectionViewCell alloc] init];
     }
     
-    cell.backgroundColor = [UIColor darkGrayColor];
+    cell.backgroundColor = [UIColor imageViewColor];
     
     Media *image = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
@@ -126,7 +127,6 @@ static NSString *const ReuseIdentifier = @"ReuseIdentifier";
 
     NSError *error;
     NSData *pngData = [NSData dataWithContentsOfFile:filePath options:NSDataReadingMappedAlways error:&error];
-    NSLog(@"%@", image);
     
     if (error)
     {

@@ -11,7 +11,7 @@
 
 @implementation FileSavingUtility
 
-+ (void)saveImage:(UIImage *)image withName:(NSString *)name saveThumbnail:(UIImage *)thumbnailImage withName:(NSString *)thumbnailName withCompletionHandler:(void (^)(NSError *))completionHandler
++ (void)saveImage:(UIImage *)image withName:(NSString *)name saveThumbnail:(UIImage *)thumbnailImage withName:(NSString *)thumbnailName withCompletionHandler:(void (^)(NSError *error))completionHandler
 {
     NSData *pngData = UIImagePNGRepresentation(image);
     
@@ -43,7 +43,7 @@
     }
 }
 
-+ (void)saveVideo:(NSURL *)videoURL withName:(NSString *)name saveThumbnail:(UIImage *)thumbnailImage withName:(NSString *)thumbnailName withCompletionHandler:(void (^)(NSError *))completionHandler
++ (void)saveVideo:(NSURL *)videoURL withName:(NSString *)name saveThumbnail:(UIImage *)thumbnailImage withName:(NSString *)thumbnailName withCompletionHandler:(void (^)(NSError *error))completionHandler
 {
     NSData *videoData = [NSData dataWithContentsOfURL:videoURL];
     
@@ -67,6 +67,36 @@
         if (!success)
         {
             completionHandler([NSError createErrorWithMessage:@"Could not save thumbnail image to the documents folder"]);
+        }
+        else
+        {
+            completionHandler(nil);
+        }
+    }
+}
+
++ (void)removeMediaNamed:(NSString *)name removeThumbnailNamed:(NSString *)thumbnailName withCompletionHandler:(void (^)(NSError *error))completionHandler
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = [paths firstObject];
+    NSString *filePath = [documentsPath stringByAppendingPathComponent:name];
+
+    NSError *error;
+    BOOL success = [fileManager removeItemAtPath:filePath error:&error];
+    
+    if (!success)
+    {
+        completionHandler([NSError createErrorWithMessage:@"Could not delete media from the documents folder"]);
+    }
+    else
+    {
+        filePath = [documentsPath stringByAppendingPathComponent:thumbnailName];
+        success = [fileManager removeItemAtPath:filePath error:&error];
+        
+        if (!success)
+        {
+            completionHandler([NSError createErrorWithMessage:@"Could not remove thumbnail image from the documents folder"]);
         }
         else
         {

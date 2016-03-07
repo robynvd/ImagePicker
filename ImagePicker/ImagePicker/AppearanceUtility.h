@@ -17,7 +17,14 @@
 
 @interface UIColor (AppearanceUtility)
 
+//Universal Colors
 + (UIColor *)backgroundColor;
++ (UIColor *)buttonColor;
++ (UIColor *)textColor;
++ (UIColor *)imageViewColor;
+
+//Selected Image View Colors
++ (UIColor *)deleteButtonColor;
 
 @end
 
