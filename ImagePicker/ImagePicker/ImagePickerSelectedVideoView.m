@@ -11,13 +11,14 @@
 #import "NSLayoutConstraint+Extensions.h"
 #import "CoreDataUtility.h"
 #import "NSError+Extended.h"
+#import "IPVideoTimerView.h"
 
 @interface ImagePickerSelectedVideoView ()
 
 @property (nonatomic, strong) Media *video;
 @property (nonatomic, strong) AVPlayer *moviePlayer;
 @property (nonatomic, strong) AVPlayerItem *videoItem;
-@property (nonatomic, strong) UILabel *timerLabel;
+@property (nonatomic, strong) IPVideoTimerView *timerView;
 
 @end
 
@@ -45,9 +46,6 @@
 {
     if (self.video)
     {
-        //Timer Label
-        self.timerLabel = [[UILabel alloc] init];
-        
         //File Path
         NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentsPath = [path firstObject];
@@ -117,7 +115,9 @@
     UIBarButtonItem *deleteVideoButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(deleteVideo)];
     self.navigationItem.rightBarButtonItem = deleteVideoButton;
     
-    self.navigationItem.titleView = self.timerLabel;
+    self.timerView = [[IPVideoTimerView alloc] init];
+    
+    self.navigationItem.titleView = self.timerView;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
@@ -142,8 +142,7 @@
 
 - (void)updateTimer
 {
-    [self.timerLabel setText:[NSString stringWithFormat:@"%f/%f", CMTimeGetSeconds(self.moviePlayer.currentTime), CMTimeGetSeconds(self.videoItem.duration)]];
-    NSLog(@"%@", [NSString stringWithFormat:@"%f/%f", CMTimeGetSeconds(self.moviePlayer.currentTime), CMTimeGetSeconds(self.videoItem.duration)]);
+    [self.timerView.timerLabel setText:[NSString stringWithFormat:@"%.f/%.fs", CMTimeGetSeconds(self.moviePlayer.currentTime), CMTimeGetSeconds(self.videoItem.duration)]];
 }
 
 # pragma mark - Actions

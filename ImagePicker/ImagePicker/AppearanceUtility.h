@@ -24,3 +24,10 @@
 @interface UIFont (AppearanceUtility)
 
 @end
+
+@interface UIImage (AppearanceUtility)
+
+- (UIImage *)getThumbnailFromImage;
+- (UIImage *)getThumbnailFromVideo:(NSURL *)videoURL;
+
+@end

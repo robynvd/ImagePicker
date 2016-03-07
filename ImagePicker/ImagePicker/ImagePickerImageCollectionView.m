@@ -122,10 +122,11 @@ static NSString *const ReuseIdentifier = @"ReuseIdentifier";
     
     NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsPath = [path firstObject];
-    NSString *filePath = [documentsPath stringByAppendingPathComponent:image.name];
+    NSString *filePath = [documentsPath stringByAppendingPathComponent:image.thumbnail];
 
     NSError *error;
     NSData *pngData = [NSData dataWithContentsOfFile:filePath options:NSDataReadingMappedAlways error:&error];
+    NSLog(@"%@", image);
     
     if (error)
     {

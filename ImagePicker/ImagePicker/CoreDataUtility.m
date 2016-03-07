@@ -13,7 +13,7 @@
 
 @implementation CoreDataUtility
 
-+ (void)saveMediaNamed:(NSString *)name withType:(NSString *)type withCompletionHandler:(void (^)(BOOL success, NSError *error))completionHandler
++ (void)saveMediaNamed:(NSString *)name withType:(NSString *)type withThumbnail:(NSString *)thumbnailName withCompletionHandler:(void (^)(BOOL success, NSError *error))completionHandler
 {
     [MagicalRecord saveWithBlock:^(NSManagedObjectContext * _Nonnull localContext)
     {
@@ -27,6 +27,7 @@
             image.name = [NSString stringWithFormat:@"%@.png", name];
         }
         image.type = type;
+        image.thumbnail = [NSString stringWithFormat:@"%@.png", thumbnailName];
     }
     completion:^(BOOL contextDidSave, NSError * _Nullable error)
     {

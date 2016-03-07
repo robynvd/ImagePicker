@@ -13,6 +13,7 @@
 #import "Image.h"
 #import <MagicalRecord/MagicalRecord.h>
 #import "FileSavingUtility.h"
+#import "AppearanceUtility.h"
 
 @interface ImagePickerImageSelectionView() <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -129,14 +130,15 @@
     NSString *type = [info objectForKey:UIImagePickerControllerMediaType];
 
     NSString *name = [[NSProcessInfo processInfo] globallyUniqueString];
-    
-    NSLog(@"%@", info);
+    NSString *thumbnailName = [NSString stringWithFormat:@"%@-thumbnail", name];
 
     if ([type isEqualToString:@"public.movie"])
     {
         NSURL *url = [info objectForKey:UIImagePickerControllerMediaURL];
+        UIImage *thumbnailImage = [[UIImage alloc] init];
+        thumbnailImage = [thumbnailImage getThumbnailFromVideo:url];
         
-        [FileSavingUtility saveVideo:url withName:name withCompletionHandler:^(NSError *error)
+        [FileSavingUtility saveVideo:url withName:name saveThumbnail:(UIImage *)thumbnailImage withName:(NSString *)thumbnailName withCompletionHandler:^(NSError *error)
         {
             if (error)
             {
@@ -144,7 +146,7 @@
             }
             else
             {
-                [CoreDataUtility saveMediaNamed:name withType:(NSString *)type withCompletionHandler:^(BOOL success, NSError *error)
+                [CoreDataUtility saveMediaNamed:name withType:(NSString *)type withThumbnail:(NSString *)thumbnailName withCompletionHandler:^(BOOL success, NSError *error)
                 {
                     if (error)
                     {
@@ -161,8 +163,10 @@
     else
     {
         self.selectedImageView.image = [info objectForKey:UIImagePickerControllerOriginalImage];
+        UIImage *thumbnailImage = self.selectedImageView.image;
+        thumbnailImage = [thumbnailImage getThumbnailFromImage];
         
-        [FileSavingUtility saveImage:self.selectedImageView.image withName:name withCompletionHandler:^(NSError *error)
+        [FileSavingUtility saveImage:self.selectedImageView.image withName:name saveThumbnail:(UIImage *)thumbnailImage withName:(NSString *)thumbnailName withCompletionHandler:^(NSError *error)
          {
              if (error)
              {
@@ -170,7 +174,7 @@
              }
              else
              {
-                 [CoreDataUtility saveMediaNamed:name withType:(NSString *)type withCompletionHandler:^(BOOL success, NSError *error)
+                 [CoreDataUtility saveMediaNamed:name withType:(NSString *)type withThumbnail:(NSString *)thumbnailName withCompletionHandler:^(BOOL success, NSError *error)
                   {
                       if (error)
                       {

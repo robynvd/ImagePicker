@@ -12,6 +12,7 @@
 		080C67511C88EA9E00614575 /* Media+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 080C674E1C88EA9E00614575 /* Media+CoreDataProperties.m */; };
 		080C67521C88EA9E00614575 /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = 080C67501C88EA9E00614575 /* Media.m */; };
 		080C67551C88EEDD00614575 /* ImagePickerSelectedVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 080C67541C88EEDD00614575 /* ImagePickerSelectedVideoView.m */; };
+		080C67591C8CF7D900614575 /* IPVideoTimerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 080C67581C8CF7D900614575 /* IPVideoTimerView.m */; };
 		08EC14191C865F6400CCBD9E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EC14181C865F6400CCBD9E /* main.m */; };
 		08EC141C1C865F6400CCBD9E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EC141B1C865F6400CCBD9E /* AppDelegate.m */; };
 		08EC141E1C865F6400CCBD9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08EC141D1C865F6400CCBD9E /* Assets.xcassets */; };
@@ -54,6 +55,8 @@
 		080C67501C88EA9E00614575 /* Media.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Media.m; sourceTree = "<group>"; };
 		080C67531C88EEDD00614575 /* ImagePickerSelectedVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickerSelectedVideoView.h; sourceTree = "<group>"; };
 		080C67541C88EEDD00614575 /* ImagePickerSelectedVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePickerSelectedVideoView.m; sourceTree = "<group>"; };
+		080C67571C8CF7D900614575 /* IPVideoTimerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPVideoTimerView.h; sourceTree = "<group>"; };
+		080C67581C8CF7D900614575 /* IPVideoTimerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPVideoTimerView.m; sourceTree = "<group>"; };
 		08EC14141C865F6400CCBD9E /* ImagePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImagePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08EC14181C865F6400CCBD9E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		08EC141A1C865F6400CCBD9E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -110,6 +113,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		080C67561C8CF7B500614575 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				080C67571C8CF7D900614575 /* IPVideoTimerView.h */,
+				080C67581C8CF7D900614575 /* IPVideoTimerView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		08EC140B1C865F6400CCBD9E = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +189,7 @@
 		08EC14441C865FB500CCBD9E /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				080C67561C8CF7B500614575 /* Views */,
 				08EC14471C86623600CCBD9E /* ImagePickerImageCollectionView.h */,
 				08EC14481C86623600CCBD9E /* ImagePickerImageCollectionView.m */,
 				08EC144D1C86673500CCBD9E /* ImagePickerImageSelectionView.h */,
@@ -429,6 +442,7 @@
 				08EC145F1C86AADE00CCBD9E /* CoreDataUtility.m in Sources */,
 				080C67511C88EA9E00614575 /* Media+CoreDataProperties.m in Sources */,
 				080C67521C88EA9E00614575 /* Media.m in Sources */,
+				080C67591C8CF7D900614575 /* IPVideoTimerView.m in Sources */,
 				080C67551C88EEDD00614575 /* ImagePickerSelectedVideoView.m in Sources */,
 				080C67461C87D7FE00614575 /* ImagePickerSelectedImageView.m in Sources */,
 				08EC144C1C8662FB00CCBD9E /* AppearanceUtility.m in Sources */,

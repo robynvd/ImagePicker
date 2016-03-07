@@ -11,7 +11,7 @@
 
 @interface FileSavingUtility : NSObject
 
-+ (void)saveImage:(UIImage *)image withName:(NSString *)name withCompletionHandler:(void (^)(NSError *error))completionHandler;
-+ (void)saveVideo:(NSURL *)videoURL withName:(NSString *)name withCompletionHandler:(void (^)(NSError *error))completionHandler;
++ (void)saveImage:(UIImage *)image withName:(NSString *)name saveThumbnail:(UIImage *)thumbnailImage withName:(NSString *)thumbnailName withCompletionHandler:(void (^)(NSError *error))completionHandler;
++ (void)saveVideo:(NSURL *)videoURL withName:(NSString *)name saveThumbnail:(UIImage *)thumbnailImage withName:(NSString *)thumbnailName withCompletionHandler:(void (^)(NSError *error))completionHandler;
 
 @end
